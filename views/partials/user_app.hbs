@@ -1,0 +1,6 @@
+<h1>User: {{usr}}</h1>
+<ol>
+  {{#each data}}
+    <li><a href="/userpiv?user={{this}}&offset=0&count=100">{{this}}</a></li>
+  {{/each}}
+</ol>

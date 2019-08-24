@@ -1,0 +1,34 @@
+<div>
+  <a href="/">Home</a> | 
+  <a href="/tresources">Resources</a> | 
+  <a href="/tusers">Users</a> | 
+  <a href="/ttags">Tags</a>
+</div>
+<h2>URL: {{url}}</h2>
+<h2>{{title}}</h2>
+{{#each data.text}}
+  <div>
+    <h4>Annotation</h4>
+    {{annotation}}
+  </div>
+  <div>
+    <h4>Text</h4>
+    {{text}}
+  </div>
+{{/each}}
+<div>
+  <h4>Tags</h4>
+  <ul>
+    {{#each data.tag}}
+      <li><a href="/tagpiv?tag={{this}}&offset=0&count=100">{{this}}</a></li>
+    {{/each}}
+  </ul>
+</div>
+<div>
+  <h4>Users</h4>
+  <ul>
+    {{#each data.usr}}
+      <li><a href="/userpiv?user={{this}}&offset=0&count=100">{{this}}</a></li>
+    {{/each}}
+  </ul>
+</div>
