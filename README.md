@@ -23,5 +23,5 @@
     ```
 1. Go to Chrome and see the app
     ```
-    http://localhost:7070
+    http://localhost:3000
     ```
