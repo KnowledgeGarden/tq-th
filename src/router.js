@@ -14,13 +14,32 @@ export default new Router({
       component: Home
     },
     {
-      path: "/about",
-      name: "about",
+      path: "/resources",
+      name: "resources",
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () =>
-        import(/* webpackChunkName: "about" */ "./views/About.vue")
+        import(/* webpackChunkName: "resources" */ "./views/Resources.vue")
+    },
+    {
+      path: "/users",
+      name: "users",
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () =>
+        import(/* webpackChunkName: "users" */ "./views/Users.vue")
+    },
+    {
+      path: "/tags",
+      name: "tags",
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () =>
+        import(/* webpackChunkName: "tags" */ "./views/Tags.vue")
     }
-  ]
+  ],
+  linkActiveClass: 'active',
 });

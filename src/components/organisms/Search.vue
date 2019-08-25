@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-jumbotron header="Vue.js API Starter">
+    <b-jumbotron header="Pivot Browser">
       <b-form @submit.prevent="onSubmitSearch">
         <b-input v-model="searchbar" />
         <div>
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import MovieService from "@/services/MovieService";
+import httpsService from "@/services/httpsService";
 export default {
   name: "Search",
   props: {
@@ -78,6 +78,7 @@ export default {
           { searchbar }
         )).data.data.movies;
       } catch (e) {
+        // TO-DO: Add better error handling
         console.error("Search", "problem getting data", e.message);
       } finally {
         this.isFetching = false;
@@ -88,20 +89,6 @@ export default {
 </script>
 
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 .searchContainer {
   height: 250px;
 }

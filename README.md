@@ -1,36 +1,27 @@
-# Vue API Starter
+# Hypothes.is Pivot Viewer
 
-> A boiler plate for full Vue/Vuex app with an API integration for simpler starting. Updated August 2019.
+## Description
+> An intuitive and simple interface to peruse wordgram tags and information, in terms of Pivots. Based on data from the [Hypothes.is](https://hypothes.is)
 
-## Project setup
-```
-npm install
-```
+### What is a pivot?
+> !! Explanation of a pivot !!
+## API Information
+> Add information here about the Java servlet, or a link to the repo.
 
-### Compiles and hot-reloads for development
-```
-npm run dev
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Instructions
+1. Clone this repository:
+    ```
+    git clone https://github.com/KnowledgeGarden/tq-th.git
+    ```
+1. Perform an installation of the NPM packages
+    ```
+    npm install
+    ```
+1. Run the application start script
+    ```
+    npm run start
+    ```
+1. Go to Chrome and see the app
+    ```
+    http://localhost:8080
+    ```
