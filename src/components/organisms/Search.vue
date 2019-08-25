@@ -14,7 +14,7 @@
             class="mt-2"
             type="submit"
           >
-            Get Movies
+            Get Data
           </b-btn>
         </div>
       </b-form>
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import httpsService from "@/services/httpsService";
+import httpsService from "@/services/httpService";
 export default {
   name: "Search",
   props: {
@@ -52,18 +52,15 @@ export default {
   data() {
     return {
       isFetching: false,
-      movieList: [],
+      app_data: [],
       fields: {
-        title: {
+        tag: {
           sortable: true
         },
-        rating: {
+        user: {
           sortable: true
         },
-        runtime: {
-          sortable: true
-        },
-        year: {
+        resources: {
           sortable: true
         }
       }
@@ -74,7 +71,7 @@ export default {
       const searchbar = this.searchbar;
       try {
         this.isFetching = true;
-        this.movieList = (await MovieService.getCurrentMovies(
+        this.app_data = (await httpService.getCurrentMovies(
           { searchbar }
         )).data.data.movies;
       } catch (e) {
