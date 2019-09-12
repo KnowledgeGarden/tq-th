@@ -19,7 +19,7 @@
         </div>
       </b-form>
     </b-jumbotron>
-    <b-table
+    <!-- <b-table
       dark
       striped
       hover
@@ -28,12 +28,16 @@
       :items="app_data"
       :fields="fields"
     >
-    </b-table>
+    </b-table> -->
+    {{ app_data }}
   </div>
 </template>
 
 <script>
 import httpService from "@/services/httpService";
+import request from 'request';
+import axios from 'axios';
+
 export default {
   name: "Search",
   props: {
@@ -49,8 +53,13 @@ export default {
       }
     }
   },
-  mounted() {
-    console.log('env variables test', process.env)
+  async mounted() {
+    try {
+      this.app_data = await axios.get("http://topicquests.net:7070/hyp/text/alzheimer's/0/5");
+      console.log(`here's the response`, this.app_data );
+    } catch (e) {
+      console.log(`failed`, e)
+    }
   },
   data() {
     return {

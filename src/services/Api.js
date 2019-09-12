@@ -9,9 +9,7 @@ const Api = () => {
 
   return axios.create({
     baseURL,
-    headers: {
-      "Content-Type": "application/json"
-    }
+    withCredentials: false
   });
 };
 
