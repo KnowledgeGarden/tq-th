@@ -1,6 +1,6 @@
 <template>
-  <b-nav tabs>
-    <b-nav-item to="/">Home</b-nav-item>
+  <b-nav pills>
+    <b-nav-item to="/home">Home</b-nav-item>
     <b-nav-item to="/resources">Resources</b-nav-item>
     <b-nav-item to="/users">Users</b-nav-item>
     <b-nav-item to="/tags">Tags</b-nav-item>

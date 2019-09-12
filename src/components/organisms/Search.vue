@@ -25,7 +25,7 @@
       hover
       small
       empty-text="No data for this search"
-      :items="movieList"
+      :items="app_data"
       :fields="fields"
     >
     </b-table>
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import httpsService from "@/services/httpService";
+import httpService from "@/services/httpService";
 export default {
   name: "Search",
   props: {
@@ -48,6 +48,9 @@ export default {
         this.$store.commit("updateSearchbar", value);
       }
     }
+  },
+  mounted() {
+    console.log('env variables test', process.env)
   },
   data() {
     return {
@@ -68,15 +71,12 @@ export default {
   },
   methods: {
     async onSubmitSearch() {
-      const searchbar = this.searchbar;
       try {
         this.isFetching = true;
-        this.app_data = (await httpService.getCurrentMovies(
-          { searchbar }
-        )).data.data.movies;
+        this.app_data = await httpService.getText(this.searchbar, 0, 5);
       } catch (e) {
         // TO-DO: Add better error handling
-        console.error("Search", "problem getting data", e.message);
+        console.error("Search", "problem getting data", e);
       } finally {
         this.isFetching = false;
       }
