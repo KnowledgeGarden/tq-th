@@ -1,6 +1,6 @@
 <template>
   <b-nav pills>
-    <b-nav-item to="/home">Home</b-nav-item>
+    <b-nav-item to="/" exact>Home</b-nav-item>
     <b-nav-item to="/resources">Resources</b-nav-item>
     <b-nav-item to="/users">Users</b-nav-item>
     <b-nav-item to="/tags">Tags</b-nav-item>
