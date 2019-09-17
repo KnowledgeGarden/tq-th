@@ -2,6 +2,7 @@
   <b-table
     striped
     hover
+    responsive
     :items="items"
     :fields="fields"
   >
@@ -10,7 +11,7 @@
 
 <script>
   export default {
-    name: "BTable",
+    name: "BaseTable",
     props: {
       items: Array,
       fields: Array,

@@ -5,6 +5,7 @@ import store from "./store";
 import "./registerServiceWorker";
 import BootstrapVue from "bootstrap-vue";
 import "@/css/custom.scss";
+import "./filters";
 
 Vue.use(BootstrapVue);
 

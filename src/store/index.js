@@ -32,6 +32,9 @@ export default new Vuex.Store({
     SET_TEXT(state, data) {
       Vue.set(state, "text", data);
     },
+    SET_RESOURCES(state, data) {
+      Vue.set(state, "resources", data);
+    },
     SET_PRIMARY(state, data) {
       Vue.set(state, "all_data", data);
     }
@@ -57,7 +60,7 @@ export default new Vuex.Store({
       console.info("httpService", "getText", " - query: ", query);
       try {
         context.commit("SET_ISFETCHING", true);
-        const data = await api.get(query);
+        const { data } = await api.get(query);
         context.commit("SET_TEXT", data);
         context.commit("SET_ISFETCHING", false);
       } catch (e) {
@@ -65,10 +68,19 @@ export default new Vuex.Store({
         context.commit("SET_ISFETCHING", false);
       }
     },
-    getResources(offset, count) {
+    FETCH_RESOURCES: async (context, payload) => {
+      const { offset, count } = payload;
       const query = `${config.APP_RESOURCES}/${offset}/${count}`;
       console.info("httpService", "start", "getResources", " - query: ", query);
-      return api.get(query);
+      try {
+        context.commit("SET_ISFETCHING", true);
+        const { data } = await api.get(query);
+        context.commit("SET_RESOURCES", data);
+        context.commit("SET_ISFETCHING", false);
+      } catch (e) {
+        console.error("FETCH_RESOURCES error,", e);
+        context.commit("SET_ISFETCHING", false);
+      }
     },
     getUsers(offset, count) {
       const query = `${config.APP_USERS}/${offset}/${count}`;
