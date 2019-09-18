@@ -20,7 +20,7 @@
       :fields="fields"
     >
       <template slot="url" slot-scope="row">
-        <a :href="row.item.url">{{ row.item.url }}</a>
+        <a target="_blank" :href="row.item.url" rel="noopener noreferrer">{{ row.item.url }}</a>
       </template>
     </b-table>
   </div>
