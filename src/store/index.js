@@ -9,32 +9,35 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    searchbar: "",
     isFetching: false,
     all_data: [],
     text: [],
+    tags: [],
     resources: [],
     users: []
   },
   getters: {
     all: state => state.all_data,
-    searchbar: state => state.searchbar,
     text: state => state.text,
     resources: state => state.resources,
+    tags: state => state.tags,
     users: state => state.users
   },
   mutations: {
     SET_ISFETCHING(state, bool) {
       Vue.set(state, "isFetching", bool);
     },
-    SET_SEARCHBAR(state, string) {
-      Vue.set(state, "searchbar", string);
-    },
     SET_TEXT(state, data) {
       Vue.set(state, "text", data);
     },
     SET_RESOURCES(state, data) {
       Vue.set(state, "resources", data);
+    },
+    SET_USERS(state, data) {
+      Vue.set(state, "users", data);
+    },
+    SET_TAGS(state, data) {
+      Vue.set(state, "tags", data);
     },
     SET_PRIMARY(state, data) {
       Vue.set(state, "all_data", data);
@@ -83,15 +86,33 @@ export default new Vuex.Store({
         context.commit("SET_ISFETCHING", false);
       }
     },
-    getUsers(offset, count) {
+    FETCH_USERS: async (context, payload) => {
+      const { offset, count } = payload;
       const query = `${config.APP_USERS}/${offset}/${count}`;
       console.info("httpService", "getUsers", " - query: ", query);
-      return api.get(query);
+      try {
+        context.commit("SET_ISFETCHING", true);
+        const { data } = await api.get(query);
+        context.commit("SET_USERS", data);
+        context.commit("SET_ISFETCHING", false);
+      } catch (e) {
+        console.error("FETCH_USERS error,", e);
+        context.commit("SET_ISFETCHING", false);
+      }
     },
-    getTags(offset, count) {
+    FETCH_TAGS: async (context, payload) => {
+      const { offset, count } = payload;
       var query = `${config.APP_TAGS}/${offset}/${count}`;
-      console.info("httpService", "getUsers", " - query: ", query);
-      return api.get(query);
+      console.info("httpService", "FETCH_TAGS", " - query: ", query);
+      try {
+        context.commit("SET_ISFETCHING", true);
+        const { data } = await api.get(query);
+        context.commit("SET_TAGS", data);
+        context.commit("SET_ISFETCHING", false);
+      } catch (e) {
+        console.error("FETCH_TAGS error,", e);
+        context.commit("SET_ISFETCHING", false);
+      }
     },
     getUserPivot(user, offset, count) {
       var query = `${config.APP_USR_PIV}/${user}/${offset}/${count}`;
@@ -104,7 +125,8 @@ export default new Vuex.Store({
       console.info("httpService", "getResourcePivot", " - query: ", query);
       return api.get(query);
     },
-    getTagPivot(tag, offset, count) {
+    FETCH_TAG_PIVOT(context, payload) {
+      const { tag, offset, count } = payload;
       var query = `${config.APP_TAG_PIV}/${tag}/${offset}/${count}`;
       console.info("httpService", "getTagPivot", " - query: ", query);
       return api.get(query);

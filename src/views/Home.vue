@@ -1,20 +1,20 @@
 <template>
   <div id="home">
     <Search />
-    <SearchTable />
+    <SearchResults />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Search from "@/components/organisms/Search.vue";
-import SearchTable from "@/components/molecules/SearchTable.vue";
+import SearchResults from "@/components/molecules/SearchResults.vue";
 
 export default {
   name: "home",
   components: {
     Search,
-    SearchTable,
+    SearchResults,
   }
 };
 </script>

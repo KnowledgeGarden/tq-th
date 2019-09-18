@@ -1,18 +1,18 @@
 <template>
   <div v-if="items.length">
-    <h2>You searched for: {{ query }}</h2>
-    <BaseTable :items="items" :fields="fields" />
+    <h2>{{ items.length }} search results for: {{ query }}</h2>
+    <SearchTable :items="items" :fields="fields" />
   </div>
 </template>
 
 <script>
   import { mapState } from 'vuex';
-  import BaseTable from "@/components/atoms/BaseTable.vue";
+  import SearchTable from "@/components/atoms/SearchTable.vue";
 
   export default {
-    name: 'SearchTable',
+    name: 'SearchResults',
     components: {
-      BaseTable
+      SearchTable
     },
     computed: mapState({
       items: 'text',
