@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <BaseTable :items="items.data" :fields="fields" />
+  <div v-if="items.length">
+    <h2>You searched for: {{ query }}</h2>
+    <BaseTable :items="items" :fields="fields" />
   </div>
 </template>
 
@@ -14,7 +15,8 @@
       BaseTable
     },
     computed: mapState({
-      items: 'text'
+      items: 'text',
+      query: 'searchbar'
     }),
     data() {
       return {

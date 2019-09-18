@@ -25,3 +25,8 @@
     ```
     http://localhost:8080
     ```
+
+## Areas to Note
+### .env file in the root of the project
+> - Global environmental variables can be added here and will be accessible anywhere in the app immediately at startup.
+> - They must begin with "VUE_"

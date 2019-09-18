@@ -30,18 +30,17 @@ export default {
   computed: {
     ...mapState(['isFetching']),
     searchbar: {
-      get() {
-        return this.$store.state.searchbar;
+      get () {
+        return this.$store.state.searchbar
       },
-      set(value) {
-        this.$store.commit("SET_SEARCHBAR", value);
+      set (string) {
+        this.$store.commit('SET_SEARCHBAR', string)
       }
     }
   },
   methods: {
     async onSubmitSearch() {
       this.$store.dispatch("FETCH_TEXT", {term: this.searchbar, offset: 0, count: 5});
-      this.$store.commit("SET_SEARCHBAR", "");
     }
   }
 };

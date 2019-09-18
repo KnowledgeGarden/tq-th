@@ -18,6 +18,7 @@ export default new Vuex.Store({
   },
   getters: {
     all: state => state.all_data,
+    searchbar: state => state.searchbar,
     text: state => state.text,
     resources: state => state.resources,
     users: state => state.users
