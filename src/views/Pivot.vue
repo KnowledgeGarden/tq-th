@@ -25,20 +25,20 @@
         links: [
           { sid: 1, tid: 2, _color:'red' },
           { sid: 2, tid: 8, _color:'f0f' },
-          { sid: 3, tid: 4,_color:'rebeccapurple' },
-          { sid: 4, tid: 5 },
-          { sid: 5, tid: 6 },
-          { sid: 7, tid: 8 },
-          { sid: 5, tid: 8 },
-          { sid: 3, tid: 8 },
-          { sid: 7, tid: 9 }
+          { sid: 8, tid: 4, _color:'rebeccapurple' },
+          { sid: 4, tid: 5, _color:'black' },
+          { sid: 5, tid: 6, _color:'black' },
+          { sid: 7, tid: 8, _color:'black' },
+          { sid: 5, tid: 8, _color:'black'},
+          { sid: 3, tid: 8, _color:'black' },
+          { sid: 7, tid: 9, _color:'black' }
         ],
         options:
         {
           force: 3000,
-          nodeSize: 20,
+          nodeSize: 40,
           nodeLabels: true,
-          linkWidth:5
+          linkWidth: 5
         }
       }
     }
