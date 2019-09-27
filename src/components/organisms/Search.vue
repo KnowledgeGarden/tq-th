@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <b-jumbotron header="Pivot Browser">
+  <b-container fluid>
+    <b-jumbotron header="Get Pivoting">
       <b-form @submit.prevent="onSubmitSearch">
-        <b-input v-model="searchbar" />
+        <b-input v-model="searchbar" placeholder="Enter Search Term"/>
         <div>
           <b-spinner
             v-if="isFetching"
@@ -14,12 +14,12 @@
             class="mt-2"
             type="submit"
           >
-            Get Data
+            Search
           </b-btn>
         </div>
       </b-form>
     </b-jumbotron>
-  </div>
+  </b-container>
 </template>
 
 <script>

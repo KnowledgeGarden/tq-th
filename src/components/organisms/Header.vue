@@ -1,9 +1,11 @@
 <template>
-  <b-nav pills>
+  <b-nav id="main--nav" tabs>
+    <b-nav-text class="logo-placeholder mx-2">Pivot Browser</b-nav-text>
     <b-nav-item to="/" exact>Home</b-nav-item>
     <b-nav-item to="/resources">Resources</b-nav-item>
     <b-nav-item to="/users">Users</b-nav-item>
     <b-nav-item to="/tags">Tags</b-nav-item>
+    <b-nav-item to="/pivot">Pivot</b-nav-item>
   </b-nav>
 </template>
 
@@ -14,22 +16,21 @@ export default {
 };
 </script>
 
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-.searchContainer {
-  height: 250px;
+<style lang="scss">
+#main--nav {
+  background: $header;
+  .logo-placeholder {
+    font-size: 17px;
+    letter-spacing: 4px;
+    font-weight: bold;
+    color: white;
+  }
+  .nav-link {
+    color: white;
+    font-weight: bold;
+    &.active {
+      color: $text;
+    }
+  }
 }
 </style>

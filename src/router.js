@@ -29,6 +29,11 @@ export default new Router({
       path: "/tags",
       name: "tags",
       component: () => import(/* webpackChunkName: "tags" */ "./views/Tags.vue")
+    },
+    {
+      path: "/pivot",
+      name: "pivot",
+      component: () => import(/* webpackChunkName: "tags" */ "./views/Pivot.vue")
     }
   ],
   linkActiveClass: "active"

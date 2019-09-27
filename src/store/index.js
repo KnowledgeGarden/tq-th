@@ -21,6 +21,7 @@ export default new Vuex.Store({
     text: state => state.text,
     resources: state => state.resources,
     tags: state => state.tags,
+    pivot: state => state.pivot,
     users: state => state.users
   },
   mutations: {
@@ -38,6 +39,9 @@ export default new Vuex.Store({
     },
     SET_TAGS(state, data) {
       Vue.set(state, "tags", data);
+    },
+    SET_PIVOT(state, data) {
+      Vue.set(state, "pivot", data);
     },
     SET_PRIMARY(state, data) {
       Vue.set(state, "all_data", data);
@@ -125,11 +129,19 @@ export default new Vuex.Store({
       console.info("httpService", "getResourcePivot", " - query: ", query);
       return api.get(query);
     },
-    FETCH_TAG_PIVOT(context, payload) {
+    FETCH_TAG_PIVOT: async (context, payload) => {
       const { tag, offset, count } = payload;
       var query = `${config.APP_TAG_PIV}/${tag}/${offset}/${count}`;
-      console.info("httpService", "getTagPivot", " - query: ", query);
-      return api.get(query);
+      console.info("httpService", "FETCH_TAG_PIVOT", " - query: ", query);
+      try {
+        context.commit("SET_ISFETCHING", true);
+        const { data } = await api.get(query);
+        context.commit("SET_PIVOT", data);
+        context.commit("SET_ISFETCHING", false);
+      } catch (e) {
+        console.error("FETCH_TAG_PIVOT error,", e);
+        context.commit("SET_ISFETCHING", false);
+      }
     }
   }
 });

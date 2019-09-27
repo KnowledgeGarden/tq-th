@@ -1,8 +1,8 @@
 <template>
-  <div id="home">
+  <b-container fluid id="home">
     <Search />
     <SearchResults />
-  </div>
+  </b-container>
 </template>
 
 <script>
@@ -23,5 +23,6 @@ export default {
   #home {
     height: 100%;
     width: 100%;
+    padding: 5% 0;
   }
 </style>

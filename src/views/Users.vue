@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <b-container fluid>
     <h1>Users</h1>
     <b-card class="text-center">
       <ul class="list-group">
         <li class="list-group-item" v-for="item in items" :key="item">{{ item }}</li>
       </ul>
     </b-card>
-  </div>
+  </b-container>
 </template>
 
 <script>

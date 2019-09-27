@@ -1,5 +1,9 @@
 module.exports = {
-  devServer: {
-    proxy: `${process.env.VUE_APP_HOST}:${process.env.VUE_APP_PORT}`
+  css: {
+    loaderOptions: {
+      sass: {
+        data: `@import "@/css/_variables.scss";`
+      }
+    }
   }
 };
